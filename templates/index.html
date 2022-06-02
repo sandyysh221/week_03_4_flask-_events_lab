@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Event Planner</h1>
+<form action="/events" method="post">
+  <label for="date">Date:</label>
+  <input type="date" name="date" id="date" />
+  <label for="name">Name of Event:</label>
+  <input type="text" name="name" id="name" />
+  <label for="number_of_guests">Number of Guests:</label>
+  <input type="number" name="number_of_guests" id="number_of_guests" />
+  <label for="location">Location:</label>
+  <input type="text" name="location" id="location" />
+  <label for="description">Description:</label>
+  <textarea name="description" id="description" cols="30" rows="2"></textarea>
+  <label for="checkbox">Is this a Recurring Event?:</label>
+  <input type="checkbox" name="recurring" />
+  <input type="submit" value="Add Event" />
+</form>
+{% for event in events %}
+<div>
+  <p>
+    <b>Event Date:</b> {{ event.date }}<br>
+    <b>Event Name:</b> {{event.name_of_event}}<br>
+    <b>Number of Guests:</b> {{event.number_of_guests}}<br>
+    <b>Location:</b> {{event.room_location}} <br><b>Description:</b>
+    {{event.description}} <br>{% if event.recurring %} This is a <b>recurring</b> event.
+    {% endif %}
+    <form action="/events/delete/{{loop.index0}}" method="post">
+          <input type="submit" value="Delete Event" />
+    </form>
+  </p>
+</div>
+{% endfor %} {% endblock %}

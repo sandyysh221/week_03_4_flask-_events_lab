@@ -1,0 +1,19 @@
+body {
+  background-color: pink;
+}
+
+.header {
+  background-color: black;
+  padding: 30px;
+}
+
+body > div > ul > li > a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+
+body > div > ul > li > a:hover {
+  text-decoration: none;
+  color: pink;
+}
